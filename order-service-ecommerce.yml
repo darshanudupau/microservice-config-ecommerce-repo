@@ -6,7 +6,7 @@ spring:
     name: order-service-ecommerce
 
   datasource:
-    url: jdbc:mysql://localhost:3306/orderdb?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/order_service_1
     username: root
     password: darshan
     driver-class-name: com.mysql.cj.jdbc.Driver
