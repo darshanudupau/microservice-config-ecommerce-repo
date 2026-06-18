@@ -4,20 +4,22 @@ server:
 spring:
   application:
     name: order-service-ecommerce
-
   datasource:
     url: jdbc:mysql://localhost:3306/order_service_1
     username: root
     password: darshan
     driver-class-name: com.mysql.cj.jdbc.Driver
-
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-
   kafka:
     bootstrap-servers: localhost:9092
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 
 management:
   tracing:
@@ -26,14 +28,7 @@ management:
   zipkin:
     tracing:
       endpoint: http://localhost:9411/api/v2/spans
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
-management:
   endpoints:
     web:
       exposure:
-        include: health,info,refresh
+        include: "health,info,refresh"
