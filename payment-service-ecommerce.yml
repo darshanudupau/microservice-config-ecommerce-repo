@@ -23,16 +23,29 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka-server:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+  instance:
+    prefer-ip-address: true
 
 management:
   tracing:
-    enabled: false        # <-- disables tracing so it won’t look for Zipkin
+    enabled: false
     sampling:
       probability: 0.0
-  # zipkin:               # <-- comment out until Zipkin is running
+
+  # Uncomment these when Zipkin is running
+  # zipkin:
   #   tracing:
   #     endpoint: http://zipkin:9411/api/v2/spans
+
   endpoints:
     web:
       exposure:
         include: "health,info,refresh"
+
+  endpoint:
+    health:
+      probes:
+        enabled: true
