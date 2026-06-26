@@ -6,7 +6,7 @@ spring:
     name: cart-service-ecommerce
 
   datasource:
-    url: jdbc:mysql://localhost:3306/cartdb?createDatabaseIfNotExist=true
+    url: jdbc:mysql://mysql:3306/cartdb?createDatabaseIfNotExist=true
     username: root
     password: darshan
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -17,12 +17,12 @@ spring:
     show-sql: true
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: kafka:9092
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-server:8761/eureka/
 
 management:
   endpoints:
