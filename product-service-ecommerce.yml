@@ -6,7 +6,7 @@ spring:
     name: product-service-ecommerce
 
   datasource:
-    url: jdbc:mysql://mysql:3306/productdb?createDatabaseIfNotExist=true
+    url: jdbc:mysql://mysql:3306/productdb
     username: root
     password: darshan
     driver-class-name: com.mysql.cj.jdbc.Driver
