@@ -1,0 +1,46 @@
+server:
+  port: 8096
+
+spring:
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/mocksterlingdb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: root
+
+  jpa:
+
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+
+    properties:
+
+      hibernate:
+        format_sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+eureka:
+
+  client:
+
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+    register-with-eureka: true
+
+    fetch-registry: true
+
+logging:
+
+  level:
+
+    root: INFO
+
+    com.kodewala.mocksterling: DEBUG
