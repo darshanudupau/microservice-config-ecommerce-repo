@@ -1,19 +1,14 @@
 server:
-  port: 8096
+  port: 8094
 
 spring:
 
-  application:
-    name: mock-sterling-oms
-
   datasource:
-    url: jdbc:mysql://localhost:3306/mocksterlingdb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/mock_sterling_db
     username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: darshan
 
   jpa:
-
     hibernate:
       ddl-auto: update
 
@@ -22,60 +17,26 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        dialect: org.hibernate.dialect.MySQLDialect
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 
 springdoc:
 
   api-docs:
-    enabled: true
+    path: /v3/api-docs
 
   swagger-ui:
-    enabled: true
     path: /swagger-ui.html
-
-  packages-to-scan: com.kodewala.mocksterling.controller
-
-  paths-to-match:
-    - /api/**
-
-management:
-
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
-  endpoint:
-    health:
-      show-details: always
-
-eureka:
-
-  client:
-
-    register-with-eureka: true
-    fetch-registry: true
-
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
-  instance:
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}:${random.uuid}
 
 logging:
 
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
-
   level:
-
     root: INFO
-
     com.kodewala.mocksterling: DEBUG
 
-    org.springframework.web: INFO
+inventory:
 
-    org.hibernate.SQL: DEBUG
-
-    org.hibernate.orm.jdbc.bind: TRACE
+  base-url: http://localhost:8096
