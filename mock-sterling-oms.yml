@@ -4,9 +4,9 @@ server:
 spring:
 
   datasource:
-    url: jdbc:mysql://localhost:3306/mock_sterling_db
+    url: jdbc:mysql://localhost:3306/mock_sterling_oms
     username: root
-    password: darshan
+    password: root
 
   jpa:
     hibernate:
@@ -18,18 +18,27 @@ spring:
       hibernate:
         format_sql: true
 
+  kafka:
+    bootstrap-servers: localhost:9092
+
 eureka:
+
   client:
+
     service-url:
+
       defaultZone: http://localhost:8761/eureka/
 
-springdoc:
+management:
 
-  api-docs:
-    path: /v3/api-docs
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
-  swagger-ui:
-    path: /swagger-ui.html
+  endpoint:
+    health:
+      show-details: always
 
 logging:
 
@@ -37,6 +46,19 @@ logging:
     root: INFO
     com.kodewala.mocksterling: DEBUG
 
-inventory:
+springdoc:
 
+  swagger-ui:
+    path: /swagger-ui.html
+
+  api-docs:
+    path: /v3/api-docs
+
+inventory:
   base-url: http://localhost:8096
+
+payment:
+  base-url: http://localhost:8097
+
+notification:
+  base-url: http://localhost:8093
